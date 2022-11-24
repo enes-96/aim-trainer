@@ -8,7 +8,7 @@ const scoreResult = document.querySelector("#score-result");
 const scoreDescr = document.querySelector("#result-descr");
 const button = document.querySelector("button");
 
-let seconds = 10;
+let seconds = 60;
 let timer;
 let userScore = 0;
 
