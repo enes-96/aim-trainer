@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/output.css" />
+    <script src="/src/script.js" defer></script>
+    <title>Aim-Trainer</title>
+  </head>
+  <body class="h-screen bg-slate-800 flex justify-center items-center"></body>
+  <p class="text-white absolute top-6 left-6 text-2xl selection:clear-none">
+    SCORE: <span id="score">0</span>
+  </p>
+  <p class="text-white absolute top-6 right-6 text-2xl selection:clear-none">
+    TIME: <span id="time"></span> <span>s</span>
+  </p>
+  <div
+    class="cursor-crosshair relative bg-white rounded-xl p-2 h-5/6 w-4/5 transition-all"
+  >
+    <div
+      id="target"
+      class="absolute h-24 w-24 bg-red-800 rounded-full transition-all"
+    ></div>
+  </div>
+</html>
