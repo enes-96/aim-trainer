@@ -8,19 +8,39 @@
     <script src="/src/script.js" defer></script>
     <title>Aim-Trainer</title>
   </head>
-  <body class="h-screen bg-slate-800 flex justify-center items-center"></body>
-  <p class="text-white absolute top-6 left-6 text-2xl selection:clear-none">
-    SCORE: <span id="score">0</span>
-  </p>
-  <p class="text-white absolute top-6 right-6 text-2xl selection:clear-none">
-    TIME: <span id="time"></span> <span>s</span>
-  </p>
-  <div
-    class="cursor-crosshair relative bg-white rounded-xl p-2 h-5/6 w-4/5 transition-all"
+  <body
+    class="transition-all h-screen bg-slate-800 flex justify-center items-center"
   >
+    <p class="text-white absolute top-6 left-6 text-2xl selection:clear-none">
+      SCORE: <span id="score">0</span>
+    </p>
+    <p class="text-white absolute top-6 right-6 text-2xl selection:clear-none">
+      TIME: <span id="time">60</span> <span>s</span>
+    </p>
     <div
-      id="target"
-      class="absolute h-24 w-24 bg-red-800 rounded-full transition-all"
+      class="cursor-crosshair relative bg-gray-200 rounded-xl p-2 h-5/6 w-4/5 transition-all"
+    >
+      <div
+        id="target"
+        class="absolute left-1/2 top-1/2 h-24 w-24 bg-red-800 rounded-full transition-all"
+      ></div>
+    </div>
+    <div
+      id="modal"
+      class="text-white z-20 hidden absolute bg-slate-800 rounded-xl p-8"
+    >
+      <h2 class="text-center text-3xl py-4">
+        Your Score is
+        <span id="score-result" class="text-green-500"></span>
+      </h2>
+      <p id="result-descr" class="text-2xl py-4 text-center"></p>
+      <button class="w-full bg-green-500 rounded-md my-4 text-xl">
+        TRY AGAIN
+      </button>
+    </div>
+    <div
+      class="z-10 absolute top-0 bottom-0 left-0 right-0 bg-slate-400/50 hidden"
+      id="overlay"
     ></div>
-  </div>
+  </body>
 </html>
