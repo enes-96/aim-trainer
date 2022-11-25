@@ -6,7 +6,7 @@ const score = document.querySelector("#score");
 const userClicks = document.querySelector("#user-clicks");
 const userHighScore = document.querySelector("#high-score");
 
-let seconds = 3;
+let seconds = 30;
 let timer = false;
 let userScore = 0;
 let clickCounter = 0;
@@ -19,14 +19,11 @@ target.addEventListener("click", () => {
     }, 1000);
   }
   function randomColor() {
-    let r = Math.floor(Math.random() * 255);
-    let g = Math.floor(Math.random() * 255);
-    let b = Math.floor(Math.random() * 255);
-    return `rbg(${r},${g},${b})`;
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
   }
   userScore++;
-  score.innerHTML = userScore;
   target.style.backgroundColor = randomColor();
+  score.innerHTML = userScore;
   randomDivGenerator();
 });
 
@@ -68,7 +65,7 @@ function randomDivGenerator() {
 }
 
 function reloadGame() {
-  seconds = 3;
+  seconds = 30;
   time.innerHTML = seconds;
   timer = false;
   userScore = 0;
