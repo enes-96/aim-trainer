@@ -8,17 +8,20 @@
     <script src="/src/script.js" defer></script>
     <title>Aim-Trainer</title>
   </head>
-  <body
-    class="transition-all h-screen bg-slate-800 flex justify-center items-center"
-  >
-    <p class="text-white absolute top-6 left-6 text-2xl selection:clear-none">
-      SCORE: <span id="score">0</span>
-    </p>
-    <p class="text-white absolute top-6 right-6 text-2xl selection:clear-none">
-      TIME: <span id="time">60</span> <span>s</span>
-    </p>
+  <body class="h-screen bg-slate-800 flex justify-center items-center">
+    <div class="text-white text-2xl selection:clear-none absolute top-4 left-4">
+      <p>SCORE: <span id="score">0</span></p>
+      <p>HIGHSCORE: <span id="high-score">0</span></p>
+    </div>
     <div
-      class="cursor-crosshair relative bg-gray-200 rounded-xl p-2 h-5/6 w-4/5 transition-all"
+      class="text-white text-2xl selection:clear-none absolute top-4 right-4"
+    >
+      <p>TIME: <span id="time">30</span> <span>s</span></p>
+      <p class="">CLICKS: <CLICKS:span id="user-clicks">0</CLICKS:span></p>
+    </div>
+    <div
+      id="game-box"
+      class="cursor-crosshair relative bg-gray-200 rounded-xl p- h-5/6 w-4/5 transition-all"
     >
       <div
         id="target"

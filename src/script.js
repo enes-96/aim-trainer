@@ -1,25 +1,34 @@
 "use strict";
 const target = document.querySelector("#target");
-const score = document.querySelector("#score");
 const time = document.querySelector("#time");
-const modal = document.querySelector("#modal");
-const overlay = document.querySelector("#overlay");
 const scoreResult = document.querySelector("#score-result");
-const scoreDescr = document.querySelector("#result-descr");
-const button = document.querySelector("button");
+const score = document.querySelector("#score");
+const userClicks = document.querySelector("#user-clicks");
+const userHighScore = document.querySelector("#high-score");
 
-let seconds = 60;
-let timer;
+let seconds = 3;
+let timer = false;
 let userScore = 0;
+let clickCounter = 0;
+let highscore = 0;
 
-time.innerHTML = seconds;
-
-function randomDivGenerator() {
-  target.style.top = `${Math.floor(Math.random() * 700)}px`;
-  target.style.left = `${Math.floor(Math.random() * 900)}px`;
-  target.style.bottom = `${Math.floor(Math.random() * 700)}px`;
-  target.style.right = `${Math.floor(Math.random() * 900)}px`;
-}
+target.addEventListener("click", () => {
+  if (timer === false) {
+    timer = window.setInterval(function () {
+      timingFunction();
+    }, 1000);
+  }
+  function randomColor() {
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    return `rbg(${r},${g},${b})`;
+  }
+  userScore++;
+  score.innerHTML = userScore;
+  target.style.backgroundColor = randomColor();
+  randomDivGenerator();
+});
 
 function timingFunction() {
   if (seconds > 0) {
@@ -27,25 +36,48 @@ function timingFunction() {
     time.innerHTML = seconds;
   } else {
     clearInterval(timer);
-    modal.classList.toggle("hidden");
-    overlay.classList.toggle("hidden");
+    if (userScore > highscore) {
+      highscore = userScore;
+      userHighScore.textContent = highscore;
+    }
+    const modal = document.querySelector("#modal").classList.toggle("hidden");
+    const overlay = document
+      .querySelector("#overlay")
+      .classList.toggle("hidden");
     scoreResult.innerHTML = userScore;
-    scoreDescr.innerHTML = `you think you can do better than ${userScore}? try again and find out!`;
+    const scoreDescr = (document.querySelector(
+      "#result-descr"
+    ).innerHTML = `you think you can do better than ${userScore}? try again and find out!`);
   }
 }
 
-target.addEventListener("click", () => {
-  if (!timer) {
-    timer = window.setInterval(function () {
-      timingFunction();
-    }, 1000);
-  }
-  userScore++;
-  score.innerHTML = userScore;
-  randomDivGenerator();
-});
+const gameBox = document
+  .querySelector("#game-box")
+  .addEventListener("click", () => {
+    if (timer) {
+      clickCounter++;
+      userClicks.innerHTML = clickCounter;
+    }
+  });
+
+function randomDivGenerator() {
+  target.style.top = `${Math.floor(Math.random() * 700)}px`;
+  target.style.left = `${Math.floor(Math.random() * 1050)}px`;
+  target.style.bottom = `${Math.floor(Math.random() * 700)}px`;
+  target.style.right = `${Math.floor(Math.random() * 1050)}px`;
+}
 
 function reloadGame() {
-  window.location.reload();
+  seconds = 3;
+  time.innerHTML = seconds;
+  timer = false;
+  userScore = 0;
+  score.innerHTML = userScore;
+  clickCounter = 0;
+  userClicks.innerHTML = clickCounter;
+  modal.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
 }
-button.addEventListener("click", reloadGame);
+const button = document
+  .querySelector("button")
+  .addEventListener("click", reloadGame);
