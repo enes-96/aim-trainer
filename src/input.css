@@ -3,3 +3,10 @@
 @tailwind utilities;
 
 @tailwind components;
+
+@media (min-width: 100px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  #smallScreen {
+    position: absolute;
+  }
+}

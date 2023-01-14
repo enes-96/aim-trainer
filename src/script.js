@@ -1,10 +1,8 @@
 "use strict";
 const target = document.querySelector("#target");
 const time = document.querySelector("#time");
-const scoreResult = document.querySelector("#score-result");
 const score = document.querySelector("#score");
 const userClicks = document.querySelector("#user-clicks");
-const userHighScore = document.querySelector("#high-score");
 
 let seconds = 30;
 let timer = false;
@@ -28,6 +26,7 @@ target.addEventListener("click", () => {
 });
 
 function timingFunction() {
+  const userHighScore = document.querySelector("#high-score");
   if (seconds > 0) {
     seconds--;
     time.innerHTML = seconds;
@@ -41,6 +40,7 @@ function timingFunction() {
     const overlay = document
       .querySelector("#overlay")
       .classList.toggle("hidden");
+    const scoreResult = document.querySelector("#score-result");
     scoreResult.innerHTML = userScore;
     const scoreDescr = (document.querySelector(
       "#result-descr"
