@@ -5,13 +5,13 @@ const score = document.querySelector("#score");
 const userClicks = document.querySelector("#user-clicks");
 
 let seconds = 30;
-let timer = false;
+let timer;
 let userScore = 0;
 let clickCounter = 0;
 let highscore = 0;
 
 target.addEventListener("click", () => {
-  if (timer === false) {
+  if (!timer) {
     timer = window.setInterval(function () {
       timingFunction();
     }, 1000);
